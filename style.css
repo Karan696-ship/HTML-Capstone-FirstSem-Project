@@ -1,0 +1,1282 @@
+/* ========== TESTIMONIALS SECTION ========== */
+.testimonials-section {
+  background: #7b5a4a;
+  padding: 60px 0 120px 0;
+  position: relative;
+  color: #fff;
+}
+.testimonials-inner {
+  width: 95%;
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+}
+.testimonials-meta {
+  text-align: center;
+  color: #fff;
+  opacity: 0.7;
+  font-size: 1rem;
+  margin-bottom: 0.5em;
+}
+.testimonials-title {
+  text-align: center;
+  font-size: 2.6rem;
+  font-weight: 800;
+  margin-bottom: 36px;
+  color: #fff;
+}
+.testimonials-timeline {
+  position: absolute;
+  left: 50%;
+  top: 110px;
+  bottom: 40px;
+  width: 24px;
+  transform: translateX(-50%);
+  z-index: 1;
+}
+.timeline-line {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  width: 4px;
+  height: 100%;
+  background: #fff;
+  opacity: 0.5;
+  border-radius: 2px;
+  transform: translateX(-50%);
+}
+.timeline-dot {
+  position: absolute;
+  left: 50%;
+  width: 16px;
+  height: 16px;
+  background: #fff;
+  border-radius: 50%;
+  border: 4px solid #7b5a4a;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+}
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px 60px;
+  margin-top: 40px;
+  position: relative;
+  z-index: 2;
+}
+.testimonial-card {
+  background: #fff;
+  color: #2c1b12;
+  border-radius: 16px;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.10);
+  padding: 0;
+  max-width: 420px;
+  min-width: 320px;
+  margin-bottom: 0;
+  border: 5px solid #fff;
+  position: relative;
+  overflow: visible;
+  display: flex;
+  flex-direction: column;
+}
+.testimonial-card.left {
+  grid-column: 1;
+  margin-left: auto;
+}
+.testimonial-card.right {
+  grid-column: 2;
+  margin-right: auto;
+}
+.testimonial-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 18px 18px 0 18px;
+  z-index: 2;
+}
+.testimonial-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #fff;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+}
+.testimonial-name {
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+.testimonial-role {
+  font-size: 0.98rem;
+  color: #bfae8e;
+}
+.testimonial-image {
+  width: 100%;
+  height: 90px;               /* make the image slightly taller */
+  background-size: cover;
+  background-position: center -18px; /* move the image upwards so the coffee cup sits higher */
+  border-radius: 0 0 0 0;
+  margin-top: -12px;          /* pull it upward so it overlaps under the white header area */
+}
+.testimonial-body {
+  background: #c6935b;
+  color: #fff;
+  border-radius: 0 0 12px 12px;
+  padding: 18px 18px 14px 18px;
+  min-height: 90px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.testimonial-card {
+  /* create breathing room at the card edge so the pointer fits */
+  padding-right: 8px;
+}
+
+/* spike / speech-pointer that points at the timeline
+   Two layered triangles: outer white border, inner colored triangle to match the review body */
+.testimonial-card.left::after,
+.testimonial-card.right::after {
+  content: "";
+  position: absolute;
+  z-index: 3; /* above timeline */
+}
+.testimonial-card.left::before,
+.testimonial-card.right::before {
+  content: "";
+  position: absolute;
+  z-index: 2; /* sits below the white outer triangle so it acts as the inner fill */
+}
+
+/* left-side cards (pointer on the right edge) */
+.testimonial-card.left::after {
+  right: -22px; /* outside the card border so it appears to point at the timeline */
+  top: 52px; /* vertical position - tuned to align with the timeline dot */
+  border-top: 12px solid transparent;
+  border-bottom: 12px solid transparent;
+  border-left: 12px solid #fff; /* outer white border to match the card thick border */
+}
+.testimonial-card.left::before {
+  right: -18px; /* slightly inside the white pointer */
+  top: 54px;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  border-left: 10px solid #c6935b; /* inner fill matches review body colour */
+}
+
+/* right-side cards (pointer on the left edge) */
+.testimonial-card.right::after {
+  left: -22px;
+  top: 52px;
+  border-left: 0;
+  border-right: 12px solid #fff;
+  border-top: 12px solid transparent;
+  border-bottom: 12px solid transparent;
+}
+.testimonial-card.right::before {
+  left: -18px;
+  top: 54px;
+  border-right: 10px solid #c6935b;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+}
+
+/* responsive adjustments so spikes and image look correct across sizes */
+@media (max-width: 900px) {
+  .testimonial-image { height: 86px; margin-top: -10px; background-position: center -16px; }
+  .testimonial-card.left::after, .testimonial-card.right::after { display: none; }
+  .testimonial-card.left::before, .testimonial-card.right::before { display: none; }
+}
+.testimonial-text {
+  font-size: 1rem;
+  margin-bottom: 18px;
+  color: #fff;
+}
+.testimonial-rating-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 1rem;
+}
+.testimonial-rating-score {
+  font-weight: 700;
+  color: #fff;
+}
+.testimonial-rating-score span {
+  font-weight: 400;
+  color: #fff;
+  opacity: 0.8;
+  margin-left: 4px;
+}
+.testimonial-stars {
+  color: #fff;
+  font-size: 1.1em;
+  letter-spacing: 1px;
+}
+@media (max-width: 900px) {
+  .testimonials-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  .testimonial-card.left, .testimonial-card.right {
+    margin-left: auto;
+    margin-right: auto;
+    grid-column: 1;
+  }
+  .testimonials-timeline {
+    display: none;
+  }
+}
+/* ========== BASIC RESET ========== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  color: #fff;
+}
+
+/* smooth scrolling for in-page navigation */
+html { scroll-behavior: smooth; }
+
+/* ========= GLOBAL BACKGROUND IMAGE ========= */
+/* this image fills the whole page */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: url('https://www.tooplate.com/templates/2137_barista_cafe/images/slides/sincere-laugh-showing-picture-smartphone-casual-meeting-with-best-friends-restaurant-terrace.jpg')
+             center/cover no-repeat;
+  z-index: -1;
+  background-attachment: fixed;
+  animation: backgroundZoom 20s ease-in-out infinite;
+}
+
+/* semi-dark layer on top of image to make text readable */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.25);
+  z-index: -1;
+}
+
+/* Background zoom animation */
+@keyframes backgroundZoom {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* ========== NAVBAR ========== */
+.top-area {
+  padding-top: 12px;
+  display: flex;
+  justify-content: center;
+}
+
+.nav {
+  width: 95%;
+  max-width: 1150px;
+  padding: 14px 26px;
+  border-radius: 40px;
+  background: rgba(10, 10, 10, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* round logo */
+.logo {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: 3px solid #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 8px;
+}
+
+/* logo image inside the circular logo area */
+.logo img,
+.logo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: 50%;
+}
+
+
+.menu-inner {
+  width: 95%;
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+/* Glassmorphism Menu Grid */
+.glass-menu-grid {
+  display: flex;
+  justify-content: center;
+  gap: 48px;
+  margin-top: 40px;
+  flex-wrap: wrap;
+}
+
+.glass-menu-card {
+  background: rgba(30, 30, 30, 0.55);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.18);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: 24px;
+  padding: 36px 40px 32px 40px;
+  min-width: 340px;
+  max-width: 400px;
+  width: 100%;
+  color: #fff;
+  text-align: left;
+  border: 1.5px solid rgba(255,255,255,0.13);
+}
+
+.glass-menu-header {
+  margin-bottom: 18px;
+  text-align: left;
+}
+.glass-menu-meta {
+  font-size: 1.05rem;
+  color: #e0cfae;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+}
+.glass-menu-title {
+  font-size: 2.1rem;
+  font-weight: 700;
+  margin: 0 0 8px 0;
+  color: #fff;
+  letter-spacing: 0.01em;
+}
+
+.glass-menu-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.glass-menu-list li {
+  display: flex;
+  flex-direction: column;
+  border-bottom: 1px solid rgba(255,255,255,0.13);
+  padding: 18px 0 10px 0;
+  position: relative;
+}
+
+.item-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.item-name {
+  font-size: 1.18rem;
+  font-weight: 600;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.item-price {
+  font-size: 1.06rem;
+  font-weight: 700;
+  color: #f4b26b; /* price accent colour */
+  margin-left: 12px;
+  display: inline-block;
+}
+.old-price {
+  text-decoration: line-through;
+  color: #f4b26b;
+  font-size: 0.98em;
+  margin-right: 6px;
+}
+.item-desc {
+  font-size: 0.98rem;
+  color: #e0e0e0;
+  margin-top: 2px;
+  margin-left: 2px;
+  opacity: 0.85;
+}
+.glass-menu-list .badge {
+  display: inline-block;
+  background: #f4b26b; /* orange accent for menu badges */
+  color: #fff; /* white text on orange badge */
+  font-size: 0.78em;
+  font-weight: 700;
+  border-radius: 6px;
+  padding: 4px 8px;
+  margin-left: 8px;
+  vertical-align: middle;
+  letter-spacing: 0.02em;
+}
+
+@media (max-width: 900px) {
+  .glass-menu-grid {
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+  }
+  .glass-menu-card {
+    min-width: 0;
+    width: 100%;
+    max-width: 98vw;
+    padding: 28px 10vw 24px 10vw;
+  }
+}
+.nav-menu {
+  list-style: none;
+  display: flex;
+  gap: 24px;
+  font-size: 16px;
+}
+
+.nav-menu a {
+  text-decoration: none;
+  color: #fff;
+  padding-bottom: 3px;
+  border-bottom: 2px solid transparent;
+  transition: 0.2s;
+}
+
+.nav-menu a.active,
+.nav-menu a:hover {
+  color: #f4b26b;
+  border-bottom-color: #f4b26b;
+}
+
+/* right button */
+.nav-btn {
+  text-decoration: none;
+  color: #fff;
+  border: 2px solid #fff;
+  padding: 8px 22px;
+  border-radius: 30px;
+  font-size: 15px;
+  transition: 0.2s;
+}
+
+.nav-btn:hover {
+  background: #fff;
+  color: #000;
+}
+
+/* ========== HERO SECTION ========== */
+.hero {
+  /* takes remaining height under navbar */
+  min-height: calc(100vh - 90px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* center diamond box */
+.hero-box {
+  width: 360px;
+  padding: 40px 30px;
+  background: rgba(0, 0, 0, 0.8);
+  text-align: center;
+  border-radius: 40px;
+  transform: rotate(-45deg);       /* make diamond */
+  /* keep the box centered in the hero area */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* rotate the inner wrapper back so text appears normal
+   -- This is more reliable than rotating every child element individually. */
+.hero-box-content {
+  transform: rotate(45deg);
+  width: 100%;
+  /* centre content within the rotated wrapper */
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* horizontal align */
+  justify-content: center; /* vertical align */
+  gap: 8px; /* small vertical spacing between hero elements */
+}
+
+ 
+
+/* small text above heading */
+.hero-small {
+  font-size: 13px;
+  color: #e0c8a8;
+  margin-bottom: 8px;
+  /* No rotation here because .hero-box-content handles it */
+}
+
+/* main heading */
+.hero-title {
+  font-size: 40px;
+  font-weight: 800;
+  margin-bottom: 10px;
+}
+
+/* subtitle */
+.hero-sub {
+  font-size: 15px;
+  margin-bottom: 18px; /* tighten space so buttons sit a bit higher */
+}
+
+/* buttons inside hero */
+.hero-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  /* the wrapper rotation (hero-box-content) already un-rotates children */
+  align-items: center;
+  margin-top: -6px; /* nudge the button row slightly upward */
+}
+
+/* Helper: shift the whole diamond hero-box up inside the hero area
+   add class .hero-shift-up to .hero-box or change the value to taste */
+.hero-shift-up {
+  transform: translateY(-22px) rotate(-45deg);
+}
+
+/* One common need is centering a single element horizontally: */
+.center-block {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Examples / helpers - use these if you need different centering techniques:
+   - text-align: center               -> centers inline text inside parent
+   - margin: 0 auto                   -> centers a block with fixed width horizontally
+   - display:flex + justify/align    -> centers both axes inside a parent
+   - position: absolute + transform   -> centers with top/left/transform when needed
+*/
+
+/* Small utility to center something absolutely inside a container */
+.abs-center {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* outline button (left) */
+.btn-outline,
+.btn-fill {
+  text-decoration: none;
+  font-size: 14px;
+  padding: 10px 20px;
+  border-radius: 20px;
+  border: 2px solid #f4b26b;
+  cursor: pointer;
+}
+
+/* transparent button */
+.btn-outline {
+  color: #f4b26b;
+  background: transparent;
+}
+
+/* orange button */
+.btn-fill {
+  color: #000;
+  background: #f4b26b;
+}
+
+/* simple hover effect */
+.btn-outline:hover {
+  background: #f4b26b;
+  color: #000;
+}
+
+.btn-fill:hover {
+  filter: brightness(1.1);
+}
+
+/* ========== SMALL SCREEN FIX ========== */
+@media (max-width: 768px) {
+  .nav {
+    flex-wrap: wrap;
+    row-gap: 10px;
+  }
+
+  .nav-menu {
+    width: 100%;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .hero-box {
+    width: 280px;
+    padding: 30px 20px;
+  }
+
+  .hero-title {
+    font-size: 30px;
+  }
+}
+
+/* ========== FEATURE / INTRO SECTION (two-column) ========= */
+.feature {
+  padding: 80px 0 120px; /* vertical spacing */
+  /* add a solid brown background across the full-width section
+     to match the reference image while keeping the page image behind
+     the rest of the layout */
+  background-color: #4a3529; /* brown matching the example */
+  color: rgba(255,255,255,0.95);
+  /* provide a little safe offset when scrolled-to so the content isn't flush to the top */
+  scroll-margin-top: 48px;
+}
+
+.feature-inner {
+  width: 95%;
+  max-width: 1200px;
+  margin: 0 auto;
+  /* give inner content a little breathing space on darker background */
+  padding: 28px 18px;
+  display: flex;
+  gap: 48px;
+  align-items: center;
+  justify-content: center;
+}
+
+.feature-card {
+  flex: 0 0 520px; /* fixed-ish width on left card */
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  background: #3b2a22; /* fallback while image loads */
+  box-shadow: 0 8px 30px rgba(0,0,0,0.35);
+}
+
+.card-media {
+  position: relative;
+  height: 420px;
+  overflow: hidden;
+  border-top-left-radius: 16px;
+  border-bottom-left-radius: 16px;
+}
+
+.card-media img {
+  display: none; /* hidden, used only as fallback inside the video element */
+}
+
+.card-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* scale and crop to fill the area */
+  display: block;
+  filter: saturate(0.7) contrast(0.9);
+}
+
+.card-overlay {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 28px 34px;
+  background: linear-gradient(180deg, rgba(0,0,0,0) 40%, rgba(242,132,40,0.95) 100%);
+  color: #fff;
+}
+
+.card-eyebrow {
+  font-weight: 700;
+  font-size: 20px;
+  margin: 0 0 8px 0;
+}
+
+.card-blurb {
+  font-weight: 700;
+  font-size: 20px;
+  margin: 0;
+}
+
+.feature-content {
+  flex: 1 1 480px;
+  max-width: 520px;
+}
+
+.meta {
+  color: rgba(255,255,255,0.75);
+  font-size: 13px;
+  margin-bottom: 18px;
+}
+
+.feature-title {
+  font-size: 44px;
+  margin: 0 0 18px 0;
+  font-weight: 800;
+}
+
+.feature-desc {
+  line-height: 1.75;
+  color: rgba(255,255,255,0.9);
+  margin-bottom: 18px;
+}
+
+.btn-large {
+  display: inline-block;
+  padding: 12px 26px;
+  border-radius: 30px;
+  border: 2px solid rgba(255,255,255,0.7);
+  color: #fff;
+  text-decoration: none;
+  transition: 0.15s ease-in-out;
+}
+
+.btn-large:hover {
+  background: rgba(255,255,255,0.06);
+  transform: translateY(-2px);
+}
+
+/* Responsive: stack columns */
+@media (max-width: 980px) {
+  .feature-inner { flex-direction: column; gap: 28px; }
+  .feature-card { width: 100%; flex-basis: auto; }
+  .card-image { height: 360px; }
+  .feature-title { font-size: 36px; }
+}
+
+@media (max-width: 520px) {
+  .card-image { height: 260px; }
+  .feature { padding-top: 48px; padding-bottom: 80px; }
+  .feature-title { font-size: 28px; }
+}
+
+/* ========== TESTIMONIALS / TIMELINE ========= */
+.testimonials-section {
+  padding: 80px 0 120px;
+  background-color: rgba(69, 44, 37, 0.94);
+  color: #fff;
+  /* offset so anchored navigation places the section below the fixed header */
+  scroll-margin-top: 96px;
+}
+.testimonials-inner {
+  width: 95%;
+  max-width: 1100px;
+  margin: 0 auto;
+  text-align: center;
+}
+.testimonials-head { margin-bottom: 28px; }
+.testimonials-meta { color: rgba(255,255,255,0.6); font-size: 13px; margin-bottom: 6px; }
+.testimonials-title { font-size: 36px; margin: 0; font-weight: 800; }
+
+.timeline {
+  display: grid;
+  grid-template-columns: 1fr 64px 1fr;
+  gap: 36px;
+  position: relative;
+  align-items: start;
+}
+
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: rgba(255,255,255,0.12);
+  transform: translateX(-50%);
+  border-radius: 4px;
+}
+
+.timeline-item { position: relative; padding: 18px 0; }
+.timeline-item.left { grid-column: 1; justify-self: end; }
+.timeline-item.right { grid-column: 3; justify-self: start; }
+
+.timeline-item::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 18px;
+  width: 12px;
+  height: 12px;
+  background: #fff;
+  border-radius: 50%;
+  border: 4px solid rgba(69,44,37,0.95);
+  box-shadow: 0 2px 0 rgba(0,0,0,0.08);
+}
+
+.testimonial-card {
+  width: 420px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%);
+  border-radius: 12px;
+  overflow: hidden;
+  border: 4px solid rgba(255,255,255,0.95);
+  box-shadow: 0 8px 30px rgba(0,0,0,0.22);
+}
+.card-top {
+  height: 84px;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px 14px;
+}
+.avatar { width: 48px; height: 48px; border-radius: 50%; overflow: hidden; border: 3px solid rgba(255,255,255,0.95); box-shadow: 0 6px 14px rgba(0,0,0,0.2); }
+.avatar img { width: 100%; height: 100%; object-fit: cover; display:block; }
+.person-info { color: #fff; text-align: left; margin-left: 8px; }
+.person-info h4 { margin: 0; font-size: 16px; font-weight: 800; }
+.person-info small { display:block; color: rgba(255,255,255,0.85); font-size: 12px; }
+
+.card-body { padding: 18px; background: linear-gradient(180deg, rgba(186,133,85,0.95) 0%, rgba(186,133,85,0.9) 100%); color: rgba(255,255,255,0.95); }
+.card-body p { font-size: 13px; line-height: 1.6; margin: 0 0 12px 0; opacity: 0.95; }
+.card-footer { display:flex; align-items:center; justify-content:space-between; gap: 12px; font-size: 13px; }
+.rating strong { margin-right: 6px; }
+.stars { color: #fff; opacity: 0.9; letter-spacing: 2px; }
+
+/* small responsive tweaks */
+@media (max-width: 1100px) {
+  .timeline { grid-template-columns: 1fr 36px 1fr; gap: 24px; }
+  .testimonial-card { width: 360px; }
+}
+
+@media (max-width: 880px) {
+  .timeline { grid-template-columns: 1fr; gap: 18px; }
+  .timeline::before { left: 22px; transform: none; width: 3px; }
+  .timeline-item { padding-left: 44px; }
+  .timeline-item::after { left: 22px; transform: none; }
+  .timeline-item.left, .timeline-item.right { grid-column: 1; justify-self: start; }
+  .testimonial-card { width: 92vw; max-width: 640px; }
+  /* on smaller screens the header is shorter — ease the offset */
+  .testimonials-section { scroll-margin-top: 72px; }
+}
+
+/* ========== MEET PEOPLE SECTION ========= */
+.meet-people {
+  padding: 64px 0 110px;
+  background-color: #c6935b; /* warm caramel background (matches screenshot) */
+  color: #2c1b12; /* dark brown text */
+}
+
+.meet-inner {
+  width: 95%;
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.meet-head { margin-bottom: 32px; }
+.meet-meta { color: rgba(44,27,18,0.75); font-size: 13px; margin-bottom: 6px; }
+.meet-title { font-size: 44px; margin: 0; font-weight: 800; }
+
+.meet-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 28px;
+  margin-top: 28px;
+  align-items: start;
+}
+
+.person {
+  border-radius: 14px;
+  overflow: hidden;
+  background: #3b2a22; /* fall-back */
+  box-shadow: 0 10px 32px rgba(0,0,0,0.12);
+  position: relative;
+  /* entrance + hover setup */
+  transform: translateY(18px) scale(0.995);
+  opacity: 0;
+  transition: transform 600ms cubic-bezier(.2,.9,.2,1), opacity 600ms ease, box-shadow 280ms ease;
+}
+
+.person-image {
+  height: 360px;
+  background-size: cover;
+  background-position: center;
+  filter: saturate(0.7) contrast(0.9);
+  /* subtle image scale during hover */
+  transform-origin: center center;
+  transition: transform 700ms cubic-bezier(.2,.9,.2,1), filter 450ms ease;
+}
+
+.person-overlay {
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  padding: 26px 20px;
+  background: linear-gradient(180deg, rgba(0,0,0,0) 40%, rgba(242,132,40,0.92) 100%);
+  color: #fff;
+  /* start overlay slightly down and hidden so hover reveals it */
+  transform: translateY(18px);
+  opacity: 0;
+  transition: transform 420ms cubic-bezier(.2,.9,.2,1), opacity 420ms ease, background 420ms ease;
+}
+
+.person-name { font-size: 20px; margin: 0 0 6px 0; display:flex; align-items:center; gap:10px; }
+.badge { background: rgba(255,255,255,0.12); color: #fff; padding: 4px 8px; border-radius: 8px; font-size: 11px; font-weight:700; }
+.person-desc { font-size: 14px; opacity: 0.95; margin: 0; }
+
+.meet-people .btn-large { border-color: rgba(44,27,18,0.85); color: #2c1b12; background: rgba(255,255,255,0.92); }
+
+/* responsive grid */
+@media (max-width: 1100px) {
+  .meet-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* Staggered entrance delays so cards pop in sequence */
+.meet-grid .person:nth-child(1) { transition-delay: 80ms; }
+.meet-grid .person:nth-child(2) { transition-delay: 160ms; }
+.meet-grid .person:nth-child(3) { transition-delay: 240ms; }
+.meet-grid .person:nth-child(4) { transition-delay: 320ms; }
+
+/* visible state added by JS when element enters the viewport */
+.person.is-visible { transform: translateY(0) scale(1); opacity: 1; }
+
+/* hover / focus interactions */
+.person:focus-within, .person:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 26px 48px rgba(0,0,0,0.22);
+}
+
+.person:hover .person-image, .person:focus-within .person-image {
+  transform: scale(1.06);
+  filter: saturate(0.9) contrast(1.02);
+}
+
+.person:hover .person-overlay, .person:focus-within .person-overlay {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+@media (max-width: 600px) {
+  .meet-grid { grid-template-columns: 1fr; }
+  .person-image { height: 320px; }
+  .meet-title { font-size: 36px; }
+}
+
+/* ========== MENU SECTION (two big cards) ========= */
+.menu-section {
+  padding: 80px 0 100px;
+  /* contrast with rest of site: choose a darker strip to make the caramel/tan elements pop */
+  background-color: #305050;
+  background-image: url(https://www.tooplate.com/templates/2137_barista_cafe/images/happy-waitress-giving-coffee-customers-while-serving-them-coffee-shop.jpg); 
+  color: #fff;
+}
+
+.menu-inner {
+  width: 95%;
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.menu-head { margin-bottom: 34px; }
+.menu-meta { font-size: 13px; color: rgba(255,255,255,0.75); }
+.menu-title { font-size: 44px; margin: 0; font-weight: 800; }
+
+.menu-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 36px;
+  align-items: stretch;
+}
+
+.menu-card {
+  border-radius: 16px;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  min-height: 420px;
+}
+
+.menu-image {
+  flex: 1 1 55%;
+  min-width: 42%;
+  background-position: center;
+  background-size: cover;
+  filter: saturate(0.7) contrast(0.95);
+}
+
+.menu-content {
+  flex: 1 1 45%;
+  padding: 36px 34px;
+  display:flex;
+  flex-direction:column;
+  justify-content: center;
+  /* transparent content background to match screenshot */
+  background: rgba(255,255,255,0.03);
+  border-left: 1px solid rgba(255,255,255,0.06);
+}
+
+.menu-name { font-size: 24px; margin: 0 0 10px 0; font-weight:700; }
+.menu-items { list-style: none; margin: 0 0 16px 0; padding: 0; color: rgba(255,255,255,0.9); }
+.menu-items li { margin-bottom: 8px; font-size: 15px; opacity: 0.95; }
+.menu-items li span { margin-left: 8px; color: rgba(255,255,255,0.65); font-weight: 600; }
+
+.menu-cta { width: max-content; margin-top: 8px; }
+
+/* make background more transparent for the 'transparent' feeling on small screens */
+@media (max-width: 980px) {
+  .menu-grid { grid-template-columns: 1fr; }
+  .menu-card { flex-direction: column; min-height: 360px; }
+  .menu-image { height: 260px; min-width: auto; }
+  .menu-content { border-left: none; background: rgba(27, 143, 176, 0.04); }
+}
+
+@media (max-width: 520px) {
+  .menu-image { height: 200px; }
+  .menu-title { font-size: 34px; }
+  .menu-content { padding: 24px; }
+}
+
+/* ========== CONTACT + FOOTER STYLES ========== */
+.contact-section {
+  /* background image with a layered gradient on top to reproduce
+     the darker upper area and warm orange fade at the bottom */
+  padding: 80px 0 120px;
+  color: #fff;
+  scroll-margin-top: 96px;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.45) 0%, rgba(214,121,43,0.55) 55%, rgba(214,121,43,0.92) 100%),
+              url('https://www.tooplate.com/templates/2137_barista_cafe/images/young-female-barista-wear-face-mask-serving-take-away-hot-coffee-paper-cup-consumer-cafe.jpg') center/cover no-repeat;
+  background-attachment: fixed;
+  position: relative;
+}
+.contact-inner {
+  width: 95%;
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  gap: 40px;
+  align-items: flex-start;
+}
+.contact-left {
+  flex: 1 1 580px;
+}
+.contact-meta {
+  color: rgba(255,255,255,0.7);
+  font-size: 13px;
+  margin-bottom: 6px;
+}
+.contact-title {
+  font-size: 36px;
+  margin: 0 0 18px 0;
+  font-weight: 800;
+}
+.contact-form .form-row {
+  display: flex;
+  gap: 18px;
+}
+.contact-form .field { display: block; width: 100%; }
+.contact-form .label-text { display: block; font-size: 13px; color: rgba(255,255,255,0.85); margin-bottom: 8px; }
+.contact-form input[type="text"],
+.contact-form input[type="email"],
+.contact-form textarea {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 8px;
+  border: 1px solid rgba(255,255,255,0.12);
+  background: rgba(255,255,255,0.03);
+  color: #fff;
+  font-size: 14px;
+}
+.contact-form textarea { min-height: 140px; resize: vertical; }
+.form-actions { text-align: center; margin-top: 20px; }
+.send-btn { padding: 12px 36px; border-radius: 30px; border: none; background: #d4792b; color: #fff; cursor: pointer; font-weight: 700; }
+.contact-right { flex: 0 0 380px; }
+.maps-embed { width: 100%; height: 220px; border-radius: 12px; border: 0; box-shadow: 0 6px 18px rgba(0,0,0,0.18); }
+
+/* Where block inside the contact area (moved from footer) */
+.where-block {
+  margin-top: 22px;
+  background: rgba(255,255,255,0.04);
+  padding: 14px 16px;
+  border-radius: 10px;
+  color: #fff;
+  max-width: 520px;
+}
+.where-block h4 { margin: 0 0 6px 0; font-size: 15px; font-weight: 700; color: rgba(255,255,255,0.95); }
+.where-block p { margin: 0 0 8px 0; font-size: 13px; opacity: 0.95; }
+.where-block .where-socials { font-size: 16px; opacity: 0.95; }
+
+
+.site-footer {
+  background: #b95f1c;
+  color: #fff;
+  padding: 48px 0 26px;
+}
+.footer-inner {
+  width: 95%;
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 28px;
+  align-items: start;
+}
+.footer-col h4 { margin: 0 0 8px 0; font-size: 15px; font-weight: 700; }
+.footer-col p { margin: 0; font-size: 13px; opacity: 0.95; }
+.footer-bottom { text-align: center; margin-top: 22px; font-size: 13px; opacity: 0.9; }
+
+@media (max-width: 900px) {
+  .contact-inner { flex-direction: column; gap: 28px; }
+  .contact-right { width: 100%; }
+  .contact-form .form-row { flex-direction: column; }
+  .footer-inner { grid-template-columns: 1fr; text-align: left; }
+}
+
+/* ========== RESERVATION PAGE STYLES ========== */
+.reservation-section {
+  padding: 60px 0 90px;
+  min-height: calc(100vh - 120px);
+  display: flex;
+  align-items: center;
+  color: #fff;
+}
+.reservation-inner {
+  width: 95%;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.reservation-card {
+  display: grid;
+  grid-template-columns: 1fr 420px;
+  gap: 0;
+  background: rgba(10,10,10,0.6);
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.45);
+  align-items: stretch;
+}
+.res-left { padding: 40px 46px; }
+.res-meta { color: rgba(255,255,255,0.7); font-size: 13px; margin-bottom: 6px; }
+.res-title { font-size: 34px; margin: 0 0 18px 0; font-weight: 800; }
+.res-form .row { display: flex; gap: 18px; margin-bottom: 12px; }
+.res-form .field { display: block; width: 100%; margin-bottom: 12px; }
+.res-form .small { flex: 1; }
+.res-form input[type="text"], .res-form input[type="date"], .res-form input[type="number"], .res-form select, .res-form textarea {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 8px;
+  border: 1px solid rgba(255,255,255,0.12);
+  background: rgba(255,255,255,0.02);
+  color: #fff;
+  font-size: 14px;
+}
+.res-form textarea { min-height: 100px; resize: vertical; }
+.res-right { min-height: 100%; }
+.res-image { width: 100%; height: 100%; min-height: 420px; background-size: cover; background-position: center; }
+.form-actions { text-align: left; margin-top: 18px; }
+.send-btn { padding: 12px 36px; border-radius: 30px; border: none; background: #d4792b; color: #fff; cursor: pointer; font-weight: 700; }
+
+/* Improved select styling for reservation time picker */
+.res-form select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  /* add a white chevron arrow encoded as SVG so it blends with the design */
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23ffffff'><path d='M7 10l5 5 5-5z'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 14px;
+  padding-right: 44px; /* leave space for the arrow */
+}
+.res-form select:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(212,121,43,0.12);
+}
+
+/* Custom select component styles */
+.custom-select {
+  position: relative;
+  display: block;
+  width: 100%;
+}
+.custom-select__trigger {
+  width: 100%;
+  text-align: left;
+  padding: 12px 14px;
+  border-radius: 8px;
+  background: rgba(255,255,255,0.02);
+  color: #fff;
+  border: 1px solid rgba(255,255,255,0.12);
+  cursor: pointer;
+  font-size: 14px;
+  position: relative;
+}
+.custom-select__trigger::after {
+  content: '';
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 14px;
+  height: 14px;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23ffffff'><path d='M7 10l5 5 5-5z'/></svg>");
+  background-repeat: no-repeat;
+  background-size: 14px;
+  pointer-events: none;
+}
+.custom-select.open .custom-select__trigger { box-shadow: 0 6px 24px rgba(0,0,0,0.36); }
+.custom-options {
+  position: absolute;
+  right: 0;
+  left: 0;
+  margin-top: 10px;
+  background: #ffffff;
+  color: #111;
+  border-radius: 8px;
+  box-shadow: 0 12px 40px rgba(0,0,0,0.35);
+  z-index: 40;
+  overflow: hidden;
+  max-height: 240px;
+  overflow-y: auto;
+  padding: 6px;
+  display: none;
+}
+.custom-select.open .custom-options { display: block; }
+.custom-option {
+  padding: 8px 12px;
+  border-radius: 6px;
+  margin: 6px 4px;
+  background: #fff;
+  cursor: pointer;
+  font-size: 14px;
+}
+.custom-option:hover { background: rgba(0,0,0,0.04); }
+
+/* make the options look like small boxes in a column (matches screenshot) */
+.custom-options .custom-option { border: 1px solid rgba(0,0,0,0.06); }
+
+@media (max-width: 520px) {
+  .custom-options { max-height: 180px; }
+}
+
+@media (max-width: 980px) {
+  .reservation-card { grid-template-columns: 1fr; }
+  .res-image { min-height: 260px; }
+  .res-left { padding: 28px 22px; }
+  .res-title { font-size: 28px; }
+}
+
+/* Reservation Page Background */
+#reservation-page {
+  background-image:
+    linear-gradient(135deg, rgba(0,0,0,0.7) 0%, rgba(212,121,43,0.3) 100%),
+    url('https://www.tooplate.com/templates/2137_barista_cafe/images/young-female-barista-wear-face-mask-serving-take-away-hot-coffee-paper-cup-consumer-cafe.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  min-height: 100vh;
+}

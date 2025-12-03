@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Reservation — Barista</title>
+  <link rel="stylesheet" href="style.css">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+</head>
+<body id="reservation-page">
+
+<header class="top-area">
+  <nav class="nav">
+    <div class="nav-left">
+      <div class="logo">
+        <img src="https://www.tooplate.com/templates/2137_barista_cafe/images/coffee-beans.png" alt="Barista logo" class="logo-img">
+      </div>
+      <span class="brand">Barista</span>
+    </div>
+
+    <ul class="nav-menu">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="index.html#cafe-kl">About</a></li>
+      <li><a href="index.html#menu">Our Menu</a></li>
+      <li><a href="index.html#testimonials">Reviews</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+    </ul>
+
+    <a href="reservation.html" class="nav-btn">Reservation ↗</a>
+  </nav>
+</header>
+
+<section class="reservation-section">
+  <div class="reservation-inner">
+    <div class="reservation-card">
+      <div class="res-left">
+        <p class="res-meta">Fill out the booking form</p>
+        <h2 class="res-title">Book a table</h2>
+
+        <form class="res-form" action="#" method="POST">
+          <div class="row">
+            <label class="field small">
+              <span class="label-text">Full Name</span>
+              <input type="text" name="fullname" placeholder="Full Name">
+            </label>
+
+            <label class="field small">
+              <span class="label-text">Phone</span>
+              <input type="text" name="phone" placeholder="+91 9267933722">
+            </label>
+          </div>
+
+          <div class="row">
+            <label class="field small">
+              <span class="label-text">Time</span>
+              <div class="custom-select" data-name="time">
+                <button type="button" class="custom-select__trigger">06:00 PM</button>
+                <div class="custom-options" aria-hidden="true">
+                   <div class="custom-option" data-value="11:00 AM">09:00 AM</div>
+                  <div class="custom-option" data-value="12:00 PM">10:00 AM</div>
+                  <div class="custom-option" data-value="11:00 AM">11:00 AM</div>
+                  <div class="custom-option" data-value="12:00 PM">12:00 PM</div>
+                  <div class="custom-option" data-value="01:00 PM">01:00 PM</div>
+                  <div class="custom-option" data-value="02:00 PM">02:00 PM</div>
+                   <div class="custom-option" data-value="11:00 AM">03:00 AM</div>
+                  <div class="custom-option" data-value="12:00 PM">04:00 PM</div>
+                    <div class="custom-option" data-value="12:00 PM">05:00 PM</div>
+                  <div class="custom-option" data-value="06:00 PM">06:00 PM</div>
+                </div>
+              </div>
+              <input type="hidden" name="time" value="06:00 PM">
+            </label>
+
+            <label class="field small">
+              <span class="label-text">Date</span>
+              <input type="date" name="date">
+            </label>
+          </div>
+
+          <label class="field">
+            <span class="label-text"></span>
+            <input type="number" name="people" min="1" placeholder="Number of People">
+          </label>
+
+          <label class="field">
+            <span class="label-text"></span>
+            <textarea name="comment" rows="4" placeholder="Comment (Optional)"></textarea>
+          </label>
+
+          <div class="form-actions">
+            <button type="submit" class="send-btn">Submit</button>
+          </div>
+        </form>
+      </div>
+
+      <div class="res-right">
+        <div class="res-image" style="background-image: url('https://www.tooplate.com/templates/2137_barista_cafe/images/barman-with-fruits.jpg')"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-col">
+      <h4>Where to find us?</h4>
+      <p>Bandra West, Mumbai, Maharashtra 400050, India</p>
+      <div class="socials">⚪︎ ⚪︎ ⚪︎</div>
+    </div>
+
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <p>Phone: +91 9267933722<br>
+      Email: kotharikaran07@gmail.com</p>
+    </div>
+
+    <div class="footer-col">
+      <h4>Opening Hours.</h4>
+      <p>Monday - Friday <strong>09:00AM -------- 06:00PM</strong><br>
+      Saturday <strong>11:00AM -------- 04:30PM</strong><br>
+      Sunday <strong>Closed</strong></p>
+    </div>
+  </div>
+  <div class="footer-bottom">Copyright © Barista Cafe 2047 - Designed By: Karan Chandra Kothari</div>
+</footer>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const form = document.querySelector('.res-form');
+    if (form) {
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        // Redirect back to main page after submission
+        window.location.href = 'index.html';
+      });
+    }
+
+    // Custom select behavior for styled time picker
+    const customSelects = document.querySelectorAll('.custom-select');
+    customSelects.forEach(cs => {
+      const trigger = cs.querySelector('.custom-select__trigger');
+      const options = cs.querySelector('.custom-options');
+      const hidden = cs.parentElement.querySelector('input[type="hidden"][name]') || cs.nextElementSibling;
+
+      // toggle dropdown
+      trigger.addEventListener('click', (ev) => {
+        ev.stopPropagation();
+        const open = cs.classList.toggle('open');
+        options.setAttribute('aria-hidden', String(!open));
+      });
+
+      // option click
+      options.querySelectorAll('.custom-option').forEach(opt => {
+        opt.addEventListener('click', (e) => {
+          const val = opt.getAttribute('data-value') || opt.textContent.trim();
+          trigger.textContent = val;
+          if (hidden && hidden.tagName === 'INPUT') hidden.value = val;
+          cs.classList.remove('open');
+          options.setAttribute('aria-hidden', 'true');
+        });
+      });
+    });
+
+    // close custom selects when clicking outside
+    document.addEventListener('click', function () {
+      document.querySelectorAll('.custom-select.open').forEach(cs => {
+        cs.classList.remove('open');
+        const opts = cs.querySelector('.custom-options');
+        if (opts) opts.setAttribute('aria-hidden', 'true');
+      });
+    });
+  });
+</script>
+
+</body>
+</html>
